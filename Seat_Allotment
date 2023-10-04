@@ -1,0 +1,56 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class SeatAllotment {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        List<Student> students = new ArrayList<>();
+
+        while (true) {
+            System.out.print("Enter the roll number for the student (0 to exit): ");
+            int rollNo = scanner.nextInt();
+
+            if (rollNo == 0) {
+                break; 
+            }
+
+            Student student = new Student(rollNo);
+            students.add(student);
+
+            
+            allocateSeat(student, students.size());
+
+            System.out.println("Roll No. " + student.getRollNo() + " is assigned to Seat No. " + student.getSeatNo());
+        }
+
+        System.out.println("Seat allocation completed.");
+        scanner.close();
+    }
+
+   
+    public static void allocateSeat(Student student, int seatNumber) {
+        student.setSeatNo(seatNumber);
+    }
+}
+
+class Student {
+    private int rollNo;
+    private int seatNo;
+
+    public Student(int rollNo) {
+        this.rollNo = rollNo;
+    }
+
+    public int getRollNo() {
+        return rollNo;
+    }
+
+    public int getSeatNo() {
+        return seatNo;
+    }
+
+    public void setSeatNo(int seatNo) {
+        this.seatNo = seatNo;
+    }
+}
